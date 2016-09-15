@@ -1,40 +1,34 @@
 package com.github.Jprnp.somanaturais;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class SomaNaturaisTest 
-    extends TestCase
-{
+public class SomaNaturaisTest {
     /**
      * Create the test case
      *
      * @param testName name of the test case
      */
-    public SomaNaturaisTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( SomaNaturaisTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testOk() {
-    	SomaNaturais.soma(5);
-    }
-    public void cemPorCento() {
-    	new SomaNaturais();
-    }
+	 @Test(expected = IllegalArgumentException.class)
+	 public void diaMenorQueUmInvalido() {
+		 SomaNaturais.soma(-1);
+	 }
+	 
+	 @Test
+	 public void somaQualquer() {
+		 assertEquals(3, SomaNaturais.soma(2));
+	 }
+	 
+	 @Test
+	 public void somaZero() {
+		 assertEquals(0, SomaNaturais.soma(0));
+	 }
+	 
+	 @Test
+	 public void cemPorCento() {
+		 new SomaNaturais();
+	 }
 }
